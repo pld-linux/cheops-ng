@@ -27,7 +27,7 @@ running. It can probe FTP, HTTP, ssh, SMTP, NNTP, IMAP, and VNC to see
 what version and type of server is running on those ports.
 
 %description -l pl
-Cheops-ng jest narzêdziem zarz±dania sieci± s³u¿±cym do tworzenia map
+Cheops-ng jest narzêdziem zarz±dzania sieci± s³u¿±cym do tworzenia map
 i monitorowania sieci. Ma mo¿liwo¶æ znajdowania urz±dzeñ w sieci,
 identyfikacji systemu operacyjnego, skanowania portów w celu
 identyfikacji popularnych us³ug sieciowych.
