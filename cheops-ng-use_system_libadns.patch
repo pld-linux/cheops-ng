@@ -1,0 +1,62 @@
+--- cheops-ng-0.1.11/Makefile.in	Fri May 23 15:08:50 2003
++++ tmp/Makefile.in	Fri May 23 15:08:41 2003
+@@ -4,7 +4,7 @@
+ # Debugging
+ DEBUG_FLAGS=# -DDEBUG_DISCOVER -DDEBUG_EVENT -DDEBUG_IO -DDEBUG_SCHEDULER
+ 
+-CFLAGS = @CFLAGS@ -Iadns-1.0/src
++CFLAGS = @CFLAGS@
+ LIBS = @LIBS@
+ 
+ CC=@CC@
+@@ -48,9 +48,8 @@
+ AGENTOBJS = cheops-agent.o agent-discover.o agent-settings.o \
+             agent-event.o agent-io.o agent-ip_utils.o agent-osscan.o \
+             agent-map.o probe.o agent-probe.o agent-auth.o agent-nmapxml.o 
+-	
+-AGENTLIBS = ./adns-1.0/src/libadns.a
+-AGENTLIBFLAGS = -lm $(LIBS) -L./adns-1.0/src/ -lcrypt
++
++AGENTLIBFLAGS = -lm $(LIBS) -lcrypt -ladns
+ 
+ # Objects for Cheops Agent Shell
+ SHOBJS = event.o io.o cheops-sh.o cheops-sh-guts.o ip_utils.o
+@@ -73,7 +72,7 @@
+ TESTS = test-sched test-socket test-probe
+ COMLIBS = #@COMLIBS@
+ CC_LIBS = 
+-CFLAGS += -Wall -g -Iadns-1.0/src $(DEBUG_FLAGS) $(GTKCFLAGS)  $(XMLCFLAGS)
++CFLAGS += -Wall -g $(DEBUG_FLAGS) $(GTKCFLAGS)  $(XMLCFLAGS)
+ 
+ ifdef DEBUG
+ CFLAGS += -DDEBUG_DISCOVER -DDEBUG_MAP -DDEBUG_NMAPXML -DDEBUG_OS_SCAN -DDEBUG_AGENT_PROBE -DDEBUG_CHEOPS_GUI -DDEBUG_EVENT -DDEBUG_CANVAS -DDEBUG_CONFIG -DDEBUG_GUI_HANDLERS -DDEBUG_IO -DDEBUG_PROBE
+@@ -83,7 +82,7 @@
+ # Additional programs
+ #PROGS = test-sched test-io cheops-sh
+ 
+-all: version.h installdir.h  ./adns-1.0/src/libadns.a $(PROGS) 
++all: version.h installdir.h $(PROGS) 
+ 
+ static: version.h $(COMOBJS) $(GUIOBJS) $(GTKOBJS) $(COMLIBS) $(AGENTOBJS) $(AGENTLIBS) $(COMOBJS) $(NORMOBJS) $(COMLIBS)
+ 	rm cheops-ng cheops-agent -f
+@@ -109,17 +108,11 @@
+ 	echo "#define CHEOPS_VERSION \"`cat version`\"" >> version.h
+ 	echo "#endif" >> version.h
+ 
+-./adns-1.0/src/Makefile: ./adns-1.0/src/Makefile.in
+-	cd adns-1.0; ./configure
+-
+-./adns-1.0/src/libadns.a: ./adns-1.0/src/Makefile
+-	$(MAKE) -C ./adns-1.0/src/
+-
+ cheops-ng: version.h $(COMOBJS) $(GUIOBJS) $(GTKOBJS) $(COMLIBS)
+-	$(CC) -o cheops-ng $(COMOBJS) $(GUIOBJS) $(GTKOBJS) $(COMLIBS) $(GTKLIBS) $(CC_LIBS) ./adns-1.0/src/libadns.a $(STATIC_FLAGS)
++	$(CC) -o cheops-ng $(COMOBJS) $(GUIOBJS) $(GTKOBJS) $(COMLIBS) $(GTKLIBS) $(CC_LIBS) $(STATIC_FLAGS)
+ 
+-cheops-agent: version.h $(AGENTOBJS) $(AGENTLIBS) $(COMOBJS) $(NORMOBJS) $(COMLIBS)
+-	$(CC) -o cheops-agent $(COMOBJS) $(AGENTOBJS) $(COMLIBS) $(AGENTLIBS) $(NORMOBJS) $(CC_LIBS) $(AGENTLIBFLAGS) $(GLIB) $(STATIC_FLAGS)
++cheops-agent: version.h $(AGENTOBJS) $(COMOBJS) $(NORMOBJS) $(COMLIBS)
++	$(CC) -o cheops-agent $(COMOBJS) $(AGENTOBJS) $(COMLIBS) $(NORMOBJS) $(CC_LIBS) $(AGENTLIBFLAGS) $(GLIB) $(STATIC_FLAGS)
+ 
+ cheops-sh: $(COMOBJS) $(SHOBJS) $(NORMOBJS) $(COMLIBS)
+ 	$(CC) -o cheops-sh $(COMOBJS) $(SHOBJS) $(COMLIBS) $(SHLIBS) $(NORMOBJS) $(CC_LIBS) $(SHLIBFLAGS)

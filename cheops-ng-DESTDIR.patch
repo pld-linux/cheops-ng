@@ -1,0 +1,33 @@
+--- cheops-ng/Makefile.in.orig	Fri May 23 13:53:48 2003
++++ cheops-ng/Makefile.in	Fri May 23 13:55:55 2003
+@@ -167,18 +167,18 @@
+ 
+ install: cheops-ng cheops-agent
+ ifdef DEFAULT_PATH
+-	mkdir -p $(DEFAULT_PATH)/pixmaps
+-	$(INSTALL) -d $(DEFAULT_PATH)
+-	$(INSTALL) -d $(bindir)
+-	$(INSTALL) -d $(prefix)/share/pixmaps
+-	$(INSTALL) pixmaps/*.xpm $(DEFAULT_PATH)/pixmaps
+-	$(INSTALL) pixmaps/cheops-ng.xpm $(prefix)/share/pixmaps
+-	$(INSTALL) -s -m 755 -o root -g root cheops-agent $(bindir)
+-	$(INSTALL) -s -m 755 -o root -g root cheops-ng $(bindir)
+-	$(INSTALL) -d $(prefix)/share/gnome/apps/Internet
+-	$(INSTALL) -d $(prefix)/share/gnome/ximian/Programs/Internet
+-	$(INSTALL) cheops-ng.desktop $(prefix)/share/gnome/apps/Internet
+-	$(INSTALL) cheops-ng.desktop $(prefix)/share/gnome/ximian/Programs/Internet
++	mkdir -p $(DESTDIR)$(DEFAULT_PATH)/pixmaps
++	$(INSTALL) -d $(DESTDIR)$(DEFAULT_PATH)
++	$(INSTALL) -d $(DESTDIR)$(bindir)
++	$(INSTALL) -d $(DESTDIR)$(prefix)/share/pixmaps
++	$(INSTALL) pixmaps/*.xpm $(DESTDIR)$(DEFAULT_PATH)/pixmaps
++	$(INSTALL) pixmaps/cheops-ng.xpm $(DESTDIR)$(prefix)/share/pixmaps
++	$(INSTALL) cheops-agent $(DESTDIR)$(bindir)
++	$(INSTALL) cheops-ng $(DESTDIR)$(bindir)
++	$(INSTALL) -d $(DESTDIR)$(prefix)/share/gnome/apps/Internet
++	$(INSTALL) -d $(DESTDIR)$(prefix)/share/gnome/ximian/Programs/Internet
++	$(INSTALL) cheops-ng.desktop $(DESTDIR)$(prefix)/share/gnome/apps/Internet
++	$(INSTALL) cheops-ng.desktop $(DESTDIR)$(prefix)/share/gnome/ximian/Programs/Internet
+ else
+ 	echo "No Default Path in Makefile"
+ 	if [ whoami = "root" ]; then echo "This program requires root privilege" ; fi
