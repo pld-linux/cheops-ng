@@ -1,5 +1,5 @@
 Summary:	Network management tool
-Summary(pl):	Narzêdzie zarz±dania sieci±
+Summary(pl):	Narzêdzie zarz±dzania sieci±
 Name:		cheops-ng
 Version:	0.1.12
 Release:	1
