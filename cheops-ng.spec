@@ -12,6 +12,8 @@ Patch1:		%{name}-use_system_libadns.patch
 Patch2:		%{name}-gcc33.patch
 URL:		http://cheops-ng.sourceforge.net/
 BuildRequires:	adns-devel
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	bison
 BuildRequires:	gnome-libs-devel
 BuildRequires:	libxml-devel
