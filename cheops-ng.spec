@@ -1,14 +1,15 @@
 Summary:	Network management tool
 Summary(pl):	Narzêdzie zarz±dania sieci±
 Name:		cheops-ng
-Version:	0.1.11
-Release:	0.9
+Version:	0.1.12
+Release:	1
 License:	GPL
 Group:		Networking/Admin
-# Source0-md5:	ed867cc4507b351c1d0bd55da1f78efd
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tgz
+# Source0-md5:	da59e555f57f29bcd4a0aad4c6c28bf6
 Patch0:		%{name}-DESTDIR.patch
 Patch1:		%{name}-use_system_libadns.patch
+Patch2:		%{name}-gcc33.patch
 URL:		http://cheops-ng.sourceforge.net/
 BuildRequires:	adns-devel
 BuildRequires:	bison
@@ -33,12 +34,14 @@ identyfikacji popularnych us³ug sieciowych.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f missing
 mv -f aclocal.m4 acinclude.m4
 %{__aclocal}
 %{__autoconf}
+cp -f %{_datadir}/automake/{config.,missing}* .
 %configure
 %{__make}
 
