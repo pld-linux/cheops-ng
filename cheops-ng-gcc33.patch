@@ -1,0 +1,12 @@
+diff -urN cheops-ng-0.1.12.orig/Makefile.in cheops-ng-0.1.12/Makefile.in
+--- cheops-ng-0.1.12.orig/Makefile.in	2003-05-23 04:58:07.000000000 +0200
++++ cheops-ng-0.1.12/Makefile.in	2003-08-10 11:43:42.000000000 +0200
+@@ -140,7 +140,7 @@
+ 	$(CC) $(CFLAGS) -c event.c -o gui-event.o $(GTKCFLAGS) -DCOMPILING_GUI
+ 
+ gpl.c: COPYING
+-	( echo "char *gpl_text = \"" ; cat COPYING | sed s/\\\"/\\\\\"/g; echo "\";" ) >gpl.c
++	( echo "char *gpl_text = \"\\\n\"" ; cat COPYING | sed -e "s/\\\"/\\\\\"/g" -e "s/^/\"/" -e "s/$$/\\\n\"/"; echo "\"\";" ) >gpl.c
+ 
+ agent-io.o: io.c
+ 	$(CC) $(CFLAGS) -c io.c -o agent-io.o $(CC_LIBS)
