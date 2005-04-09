@@ -43,7 +43,7 @@ rm -f missing
 mv -f aclocal.m4 acinclude.m4
 %{__aclocal}
 %{__autoconf}
-cp -f %{_datadir}/automake/{config.,missing}* .
+cp -f /usr/share/automake/{config.,missing}* .
 %configure
 %{__make}
 
