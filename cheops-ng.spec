@@ -1,5 +1,5 @@
 Summary:	Network management tool
-Summary(pl.UTF-8):   Narzędzie zarządzania siecią
+Summary(pl.UTF-8):	Narzędzie zarządzania siecią
 Name:		cheops-ng
 Version:	0.1.12
 Release:	1
