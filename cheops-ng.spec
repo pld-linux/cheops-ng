@@ -1,5 +1,5 @@
 Summary:	Network management tool
-Summary(pl):	Narzêdzie zarz±dzania sieci±
+Summary(pl.UTF-8):   NarzÄ™dzie zarzÄ…dzania sieciÄ…
 Name:		cheops-ng
 Version:	0.1.12
 Release:	1
@@ -26,11 +26,11 @@ and does a port scan of each computer to tell what services are
 running. It can probe FTP, HTTP, ssh, SMTP, NNTP, IMAP, and VNC to see
 what version and type of server is running on those ports.
 
-%description -l pl
-Cheops-ng jest narzêdziem zarz±dzania sieci± s³u¿±cym do tworzenia map
-i monitorowania sieci. Ma mo¿liwo¶æ znajdowania urz±dzeñ w sieci,
-identyfikacji systemu operacyjnego, skanowania portów w celu
-identyfikacji popularnych us³ug sieciowych.
+%description -l pl.UTF-8
+Cheops-ng jest narzÄ™dziem zarzÄ…dzania sieciÄ… sÅ‚uÅ¼Ä…cym do tworzenia map
+i monitorowania sieci. Ma moÅ¼liwoÅ›Ä‡ znajdowania urzÄ…dzeÅ„ w sieci,
+identyfikacji systemu operacyjnego, skanowania portÃ³w w celu
+identyfikacji popularnych usÅ‚ug sieciowych.
 
 %prep
 %setup -q
